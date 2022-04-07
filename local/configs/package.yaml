@@ -1,0 +1,7 @@
+---
+name: setuptools-wrapper
+version: "{{major}}.{{minor}}.{{patch}}"
+description: A simple interface to setuptools's setup function.
+requirements: []
+dev_requirements:
+  - vmklib
