@@ -1,21 +1,20 @@
 # =====================================
 # generator=datazen
 # version=2.1.0
-# hash=11bd4b89c5429fa044e4befcfc132263
+# hash=317fdadcd93351c1efb6ba5a26ec4cdf
 # =====================================
 
 """
 setuptools-wrapper - Package definition for distribution.
 """
 
-# third-party
-try:
-    from vmklib.setup import setup
-except (ImportError, ModuleNotFoundError):
-    from setuptools_wrapper_bootstrap.setup import setup  # type: ignore
-
 # internal
 from setuptools_wrapper import DESCRIPTION, PKG_NAME, VERSION
+
+try:
+    from setuptools_wrapper.setup import setup
+except (ImportError, ModuleNotFoundError):
+    from setuptools_wrapper_bootstrap.setup import setup  # type: ignore
 
 author_info = {
     "name": "Vaughn Kottler",

@@ -2,6 +2,9 @@
 name: setuptools-wrapper
 version: "{{major}}.{{minor}}.{{patch}}"
 description: A simple interface to setuptools's setup function.
-requirements: []
+requirements:
+  - setuptools
 dev_requirements:
-  - vmklib
+  - types-setuptools
+classifiers:
+  - "Topic :: Software Development :: Build Tools"

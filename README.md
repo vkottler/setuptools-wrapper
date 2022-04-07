@@ -2,7 +2,7 @@
     =====================================
     generator=datazen
     version=2.1.0
-    hash=a4fc1350957d8df0157e0153627a6920
+    hash=8e2fca2b8f4beaa45ee1de8fa0b0665f
     =====================================
 -->
 
@@ -13,6 +13,10 @@
 [![codecov](https://codecov.io/gh/vkottler/setuptools-wrapper/branch/master/graphs/badge.svg?branch=master)](https://codecov.io/github/vkottler/setuptools-wrapper)
 
 *A simple interface to setuptools's setup function.*
+
+That's it. I personally think there are way too many configuration options when
+"packaging" software and I want to homogenize my own packages. Thus:
+`setuptools-wrapper`.
 
 # Internal Dependency Graph
 
