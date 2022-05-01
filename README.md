@@ -2,7 +2,7 @@
     =====================================
     generator=datazen
     version=2.1.0
-    hash=dd1073ac056a397cf5a80d700cd46ece
+    hash=27acf11767cb3119c620b0213deb8ba8
     =====================================
 -->
 
@@ -13,6 +13,9 @@
 [![codecov](https://codecov.io/gh/vkottler/setuptools-wrapper/branch/master/graphs/badge.svg?branch=master)](https://codecov.io/github/vkottler/setuptools-wrapper)
 
 *A simple interface to setuptools's setup function.*
+
+See also: [generated documentation](https://vkottler.github.io/python/pydoc/setuptools_wrapper.html)
+(created with [`pydoc`](https://docs.python.org/3/library/pydoc.html)).
 
 That's it. I personally think there are way too many configuration options when
 "packaging" software and I want to homogenize my own packages. Thus:
