@@ -6,5 +6,6 @@ requirements:
   - setuptools
 dev_requirements:
   - types-setuptools
+  - vcorelib
 classifiers:
   - "Topic :: Software Development :: Build Tools"

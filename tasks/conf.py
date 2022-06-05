@@ -6,10 +6,10 @@ A module for project-specific task registration.
 from pathlib import Path
 from typing import Dict
 
-from vcorelib.target.resolver import TargetResolver
-
 # third-party
+from vcorelib.task import Phony
 from vcorelib.task.manager import TaskManager
+from vcorelib.task.subprocess.run import is_windows
 
 
 def register(
@@ -20,11 +20,11 @@ def register(
 ) -> bool:
     """Register project tasks to the manager."""
 
-    # Reset the target resolver to disable Python tasks.
-    manager.resolver = TargetResolver()
-
-    # No project tasks yet.
-    del manager
+    # Don't run yamllint on Windows because it will fail on newlines.
+    manager.register(
+        Phony("yaml"),
+        [] if is_windows() else ["yaml-lint-local", "yaml-lint-manifest.yaml"],
+    )
     del project
     del cwd
     del substitutions
