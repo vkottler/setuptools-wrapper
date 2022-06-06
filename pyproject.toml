@@ -3,7 +3,7 @@ requires = ["setuptools", "wheel", "trove-classifiers"]
 
 [project]
 name = "setuptools-wrapper"
-version = "0.1.1"
+version = "0.1.2"
 description = "A simple interface to setuptools's setup function."
 readme = "README.md"
 requires-python = ">=3.7"
@@ -23,6 +23,7 @@ classifiers = [
   "Operating System :: MacOS",
   "Operating System :: POSIX :: Linux",
   "Operating System :: Unix",
+  "Development Status :: 5 - Production/Stable",
   "License :: OSI Approved :: MIT License"
 ]
 dependencies = [
