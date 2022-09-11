@@ -32,13 +32,13 @@ dependencies = [
 
 [project.optional-dependencies]
 test = [
-  "types-setuptools",
-  "vcorelib",
   "pylint",
   "flake8",
   "pytest",
   "pytest-cov",
   "mypy",
   "black",
-  "isort"
+  "isort",
+  "types-setuptools",
+  "vcorelib"
 ]
