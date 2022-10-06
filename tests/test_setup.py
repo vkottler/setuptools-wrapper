@@ -31,7 +31,7 @@ def test_setup_fn():
         "versions": ["3"],
         "force_copy": True,
     }
-    pkg_info["slug"] = pkg_info["name"].replace("-", "_")
+    pkg_info["slug"] = str(pkg_info["name"]).replace("-", "_")
 
     def setup_stub(*_, **__):
         """Don't do anything."""
