@@ -6,6 +6,7 @@ A simpler setuptools-based package definition.
 from contextlib import contextmanager
 import os
 import shutil
+from sys import platform
 import tempfile
 from typing import Any, Dict, Iterator, List, Set, Union, cast
 
@@ -106,6 +107,23 @@ def get_data_files(pkg_name: str, data_dir: str = "data") -> List[str]:
     return data_files
 
 
+def process_requirements(requirements: Set[str]) -> Set[str]:
+    """Process conditional statements in requirement declarations."""
+
+    new_reqs: Set[str] = set()
+
+    for requirement in requirements:
+        parts = [x.strip() for x in requirement.split(";")]
+        if len(parts) == 1:
+            new_reqs.add(parts[0])
+        elif eval(  # pylint: disable=eval-used
+            parts[1], {}, {"sys_platform": platform}
+        ):
+            new_reqs.add(parts[0])
+
+    return new_reqs
+
+
 # pylint: disable=too-many-arguments
 def setup(
     pkg_info: Dict[str, Any],
@@ -182,7 +200,7 @@ def setup(
                 ),
                 classifiers=classifiers_override,
                 python_requires=f">={pkg_info.get('versions', ['3.6'])[0]}",
-                install_requires=list(requirements),
+                install_requires=list(process_requirements(requirements)),
                 package_data={
                     pkg_info["slug"]: (
                         get_data_files(pkg_info["slug"])

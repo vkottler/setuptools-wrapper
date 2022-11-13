@@ -4,6 +4,7 @@ Test the 'setup' module.
 
 # built-in
 import os
+from sys import platform
 import tempfile
 
 # third-party
@@ -11,7 +12,16 @@ import setuptools
 
 # module under test
 from setuptools_wrapper import DESCRIPTION, PKG_NAME, VERSION
+from setuptools_wrapper.setup import process_requirements
 from setuptools_wrapper.setup import setup as setup_fn
+
+
+def test_process_requirements():
+    """Test the 'process_requirements' method."""
+
+    assert process_requirements(
+        {"test", f"test2; sys_platform == '{platform}'"}
+    ) == {"test", "test2"}
 
 
 def test_setup_fn():
