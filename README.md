@@ -2,11 +2,11 @@
     =====================================
     generator=datazen
     version=3.1.0
-    hash=9ece33fb5552ef7909cacc713609179d
+    hash=d8e8ad6bd4253ac83ca91111434f9d09
     =====================================
 -->
 
-# setuptools-wrapper ([0.2.0](https://pypi.org/project/setuptools-wrapper/))
+# setuptools-wrapper ([0.2.1](https://pypi.org/project/setuptools-wrapper/))
 
 [![python](https://img.shields.io/pypi/pyversions/setuptools-wrapper.svg)](https://pypi.org/project/setuptools-wrapper/)
 ![Build Status](https://github.com/vkottler/setuptools-wrapper/workflows/Python%20Package/badge.svg)

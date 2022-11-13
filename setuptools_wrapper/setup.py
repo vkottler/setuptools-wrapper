@@ -87,8 +87,7 @@ def get_requirements(reqs_filename: str) -> Set[str]:
 
     try:
         with open(reqs_filename, "r", encoding="utf-8") as reqs_file:
-            reqs: List[str] = reqs_file.read().strip().split()
-        return set(reqs)
+            return set(x.strip() for x in reqs_file)
     except FileNotFoundError:
         return set()
 
