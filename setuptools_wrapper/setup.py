@@ -195,7 +195,8 @@ def setup(
                 long_description_content_type="text/markdown",
                 url=url_override,
                 packages=setuptools.find_namespace_packages(
-                    exclude=["tests", "tests.*"]
+                    include=[pkg_info["slug"], pkg_info["slug"] + ".*"],
+                    exclude=["tests", "tests.*"],
                 ),
                 classifiers=classifiers_override,
                 python_requires=f">={pkg_info.get('versions', ['3.6'])[0]}",
