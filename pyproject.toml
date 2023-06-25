@@ -6,7 +6,7 @@ name = "setuptools-wrapper"
 version = "0.2.3"
 description = "A simple interface to setuptools's setup function."
 readme = "README.md"
-requires-python = ">=3.7"
+requires-python = ">=3.8"
 authors = [
   {name = "Vaughn Kottler", email = "vaughnkottler@gmail.com"}
 ]
@@ -15,10 +15,10 @@ maintainers = [
 ]
 classifiers = [
   "Topic :: Software Development :: Build Tools",
-  "Programming Language :: Python :: 3.7",
   "Programming Language :: Python :: 3.8",
   "Programming Language :: Python :: 3.9",
   "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
   "Operating System :: Microsoft :: Windows",
   "Operating System :: MacOS",
   "Operating System :: POSIX :: Linux",
@@ -32,11 +32,11 @@ dynamic = ["dependencies"]
 test = [
   "pylint",
   "flake8",
-  "pytest",
-  "pytest-cov",
-  "mypy",
   "black",
+  "ruff",
+  "mypy",
   "isort",
+  "yamllint",
   "types-setuptools",
   "vcorelib"
 ]
