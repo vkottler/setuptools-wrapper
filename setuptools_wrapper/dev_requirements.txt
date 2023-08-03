@@ -5,5 +5,7 @@ ruff
 mypy
 isort
 yamllint
+yambs
+vmklib
 types-setuptools
 vcorelib
