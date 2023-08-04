@@ -2,7 +2,7 @@
     =====================================
     generator=datazen
     version=3.1.2
-    hash=9deb69712759cd424c2a38a4689d2898
+    hash=bdc8cbeffc39ea95df38335962f10ab5
     =====================================
 -->
 
@@ -16,8 +16,14 @@
 
 *A simple interface to setuptools's setup function.*
 
-See also: [generated documentation](https://vkottler.github.io/python/pydoc/setuptools_wrapper.html)
-(created with [`pydoc`](https://docs.python.org/3/library/pydoc.html)).
+## Documentation
+
+### Generated
+
+* By [sphinx-apidoc](https://vkottler.github.io/python/sphinx/setuptools-wrapper)
+(What's [`sphinx-apidoc`](https://www.sphinx-doc.org/en/master/man/sphinx-apidoc.html)?)
+* By [pydoc](https://vkottler.github.io/python/pydoc/setuptools_wrapper.html)
+(What's [`pydoc`](https://docs.python.org/3/library/pydoc.html)?)
 
 ## Python Version Support
 
