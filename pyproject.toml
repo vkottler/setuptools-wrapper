@@ -3,7 +3,7 @@ requires = ["setuptools", "wheel", "trove-classifiers"]
 
 [project]
 name = "setuptools-wrapper"
-version = "0.2.4"
+version = "0.2.5"
 description = "A simple interface to setuptools's setup function."
 readme = "README.md"
 requires-python = ">=3.8"
@@ -19,6 +19,7 @@ classifiers = [
   "Programming Language :: Python :: 3.9",
   "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
   "Operating System :: Microsoft :: Windows",
   "Operating System :: MacOS",
   "Operating System :: POSIX :: Linux",
@@ -39,6 +40,8 @@ test = [
   "yamllint",
   "yambs",
   "vmklib",
+  "sphinx",
+  "sphinx-book-theme",
   "types-setuptools",
   "vcorelib"
 ]
