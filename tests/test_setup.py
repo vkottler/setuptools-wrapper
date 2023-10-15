@@ -12,15 +12,34 @@ import setuptools
 
 # module under test
 from setuptools_wrapper import DESCRIPTION, PKG_NAME, VERSION
-from setuptools_wrapper.setup import process_requirements
+from setuptools_wrapper.setup import PythonVersionCompare, process_requirements
 from setuptools_wrapper.setup import setup as setup_fn
+
+
+def test_version_compare():
+    """Test Python version-string comparisons."""
+
+    inst = PythonVersionCompare()
+
+    assert inst > "2"
+    assert inst == PythonVersionCompare()
+
+    sample = PythonVersionCompare(3, 11, 4)
+
+    assert sample < "4.0.0"
+    assert sample <= "4.0.0"
+
+    assert sample != "3.11.3"
+
+    assert "3.10" < sample
+    assert "3.10" <= sample
 
 
 def test_process_requirements():
     """Test the 'process_requirements' method."""
 
     assert process_requirements(
-        {"test", f"test2; sys_platform == '{platform}'"}
+        {"test", f"test2; sys_platform == '{platform}'; python_version > 1"}
     ) == {"test", "test2"}
 
 

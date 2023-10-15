@@ -6,7 +6,7 @@ A simpler setuptools-based package definition.
 from contextlib import contextmanager
 import os
 import shutil
-from sys import platform
+from sys import platform, version_info
 import tempfile
 from typing import Any, Dict, Iterator, List, Set, Union, cast
 
@@ -106,6 +106,90 @@ def get_data_files(pkg_name: str, data_dir: str = "data") -> List[str]:
     return data_files
 
 
+class PythonVersionCompare:
+    """Python version string comparison object."""
+
+    def __init__(
+        self, major: int = None, minor: int = None, micro: int = None
+    ) -> None:
+        """Initialize this instance."""
+
+        if major is None:
+            major = version_info.major
+        if minor is None:
+            minor = version_info.minor
+        if micro is None:
+            micro = version_info.micro
+
+        self.major = major
+        self.minor = minor
+        self.micro = micro
+
+    @staticmethod
+    def from_str(data: str) -> "PythonVersionCompare":
+        """Create a version comparison instance from a string."""
+
+        parts = data.strip().split(".")
+
+        major = None
+        minor = None
+        micro = None
+
+        for part in parts:
+            as_int = int(part)
+
+            if major is None:
+                major = as_int
+            elif minor is None:
+                minor = as_int
+            elif micro is None:
+                micro = as_int
+
+        return PythonVersionCompare(major=major, minor=minor, micro=micro)
+
+    def cmp(self, other) -> int:
+        """Compare to an object."""
+
+        if isinstance(other, str):
+            other = PythonVersionCompare.from_str(other)
+
+        assert isinstance(other, PythonVersionCompare)
+
+        diff = self.major - other.major
+        if diff != 0:
+            return diff
+
+        diff = self.minor - other.minor
+        if diff != 0:
+            return diff
+
+        return self.micro - other.micro
+
+    def __lt__(self, other) -> bool:
+        """Compare to an object."""
+        return self.cmp(other) < 0
+
+    def __le__(self, other) -> bool:
+        """Compare to an object."""
+        return self.cmp(other) <= 0
+
+    def __eq__(self, other) -> bool:
+        """Compare to an object."""
+        return self.cmp(other) == 0
+
+    def __ne__(self, other) -> bool:
+        """Compare to an object."""
+        return self.cmp(other) != 0
+
+    def __gt__(self, other) -> bool:
+        """Compare to an object."""
+        return self.cmp(other) > 0
+
+    def __ge__(self, other) -> bool:
+        """Compare to an object."""
+        return self.cmp(other) >= 0
+
+
 def process_requirements(requirements: Set[str]) -> Set[str]:
     """Process conditional statements in requirement declarations."""
 
@@ -116,7 +200,12 @@ def process_requirements(requirements: Set[str]) -> Set[str]:
         if len(parts) == 1:
             new_reqs.add(parts[0])
         elif eval(  # pylint: disable=eval-used
-            parts[1], {}, {"sys_platform": platform}
+            parts[1],
+            {},
+            {
+                "sys_platform": platform,
+                "python_version": PythonVersionCompare(),
+            },
         ):
             new_reqs.add(parts[0])
 
