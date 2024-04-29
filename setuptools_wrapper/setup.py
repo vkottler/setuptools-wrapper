@@ -244,9 +244,11 @@ def setup(
     )
     classifiers_override = cast(
         List[str],
-        defaults["classifiers_override"]
-        if classifiers_override is None
-        else classifiers_override,
+        (
+            defaults["classifiers_override"]
+            if classifiers_override is None
+            else classifiers_override
+        ),
     )
     requirements = cast(
         Set[str],
